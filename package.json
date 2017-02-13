@@ -1,0 +1,38 @@
+{
+  "name": "pundun",
+  "version": "1.0.0",
+  "description": "Pundun's Grafana Plugin",
+  "main": "dist/server.js",
+  "scripts": {
+    "clean": "rm -rf dist/*",
+    "copy": "cp -r lib/* dist/",
+    "babel": "babel lib --out-dir dist --ignore server.js",
+    "lint": "eslint dist",
+    "build:all": "npm run copy && npm run babel && npm run lint",
+    "watch:all": "onchange \"lib\" -- npm run build:all",
+    "start": "npm run build:all && npm run watch:all"
+  },
+  "author": "Erdem Aksu",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.14.1",
+    "method-override": "^2.3.7",
+    "moment": "^2.17.1",
+    "pundunjs": "git+https://github.com/pundunlabs/pundunjs.git"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-plugin-transform-es2015-for-of": "^6.22.0",
+    "babel-plugin-transform-es2015-modules-systemjs": "^6.22.0",
+    "babel-preset-es2015": "^6.22.0",
+    "debug": "^2.6.0",
+    "eslint": "^3.14.1",
+    "nodemon": "^1.11.0",
+    "onchange": "^3.2.1"
+  },
+  "keywords": [
+    "pundun",
+    "grafana",
+    "plugin"
+  ]
+}

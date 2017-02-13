@@ -1,0 +1,37 @@
+<query-editor-row query-ctrl="ctrl" can-collapse="true" has-text-edit-mode="true">
+
+	<div class="gf-form" ng-if="ctrl.target.rawQuery">
+		<input type="text" class="gf-form-input" ng-model="ctrl.target.query" spellcheck="false" ng-blur="ctrl.refresh()"></input>
+	</div>
+
+	<div ng-if="!ctrl.target.rawQuery">
+		<div class="gf-form-inline">
+			<div class="gf-form">
+				<label class="gf-form-label query-keyword width-5">SELECT</label>
+			</div>
+
+			<div class="gf-form" ng-repeat="segment in ctrl.selectSegments">
+			    <metric-segment segment="segment" get-options="ctrl.onSelectSegment(segment)" on-change="ctrl.onSelectUpdate(segment, $index)" css-class="tight-form-item-xxlarge"></metric-segment>
+			</div>
+		</div>
+		<div class="gf-form-inline">
+			<div class="gf-form">
+				<label class="gf-form-label query-keyword width-5">FROM</label>
+			</div>
+
+			<div class="gf-form">
+			    <metric-segment-model property="ctrl.target.from" get-options="ctrl.getOptions()" on-change="ctrl.onChangeInternal()" css-class="tight-form-item-xxlarge"></metric-segment-model>
+			</div>
+
+		</div>
+		<div class="gf-form-inline">
+			<div class="gf-form">
+				<label class="gf-form-label query-keyword width-5">WHERE</label>
+			</div>
+
+			<div class="gf-form" ng-repeat="segment in ctrl.whereSegments">
+			    <metric-segment segment="segment" get-options="ctrl.onWhereSegment(segment)" on-change="ctrl.onWhereUpdate(segment, $index)" css-class="tight-form-item-xxlarge"></metric-segment>
+			</div>
+		</div>
+	</div>
+</query-editor-row>
