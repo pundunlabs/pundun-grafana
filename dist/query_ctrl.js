@@ -69,10 +69,16 @@ System.register(['app/plugins/sdk', './css/query-editor.css!'], function (_expor
           _this.scope = $scope;
           _this.uiSegmentSrv = uiSegmentSrv;
           _this.target.select = _this.target.select || [];
-          _this.selectSegments = [uiSegmentSrv.newPlusButton()];
+          _this.selectSegments = _this.target.select.map(function (s) {
+            return uiSegmentSrv.newSegment({ fake: true, value: s });
+          });
+          _this.selectSegments.push(uiSegmentSrv.newPlusButton());
           _this.target.from = _this.target.from || '-- enter table name --';
           _this.target.where = _this.target.where || [];
-          _this.whereSegments = [uiSegmentSrv.newPlusButton()];
+          _this.whereSegments = _this.target.where.map(function (w) {
+            return uiSegmentSrv.newSegment({ fake: true, value: w });
+          });
+          _this.whereSegments.push(uiSegmentSrv.newPlusButton());
           _this.removeTagFilterSegment = uiSegmentSrv.newSegment({ fake: true, value: '-- remove --' });
           return _this;
         }
@@ -113,7 +119,7 @@ System.register(['app/plugins/sdk', './css/query-editor.css!'], function (_expor
               this.target.select.splice(index, 1);
               this.selectSegments.splice(index, 1);
             } else {
-              this.target.select[index] = this.clone(segment.value);
+              this.select[index] = this.clone(segment.value);
               this.selectSegments[index] = segment;
               this.selectSegments[index].type = 'key';
               if (this.selectSegments[this.selectSegments.length - 1].type !== 'plus-button') {
