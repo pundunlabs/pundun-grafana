@@ -15,7 +15,9 @@
   "author": "Erdem Aksu",
   "license": "Apache-2.0",
   "dependencies": {
+    "co-functional": "^0.2.1",
     "express": "^4.14.1",
+    "jsep": "^0.3.0",
     "method-override": "^2.3.7",
     "moment": "^2.17.1",
     "pundunjs": "git+https://github.com/pundunlabs/pundunjs.git"
