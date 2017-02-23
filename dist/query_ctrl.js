@@ -119,7 +119,7 @@ System.register(['app/plugins/sdk', './css/query-editor.css!'], function (_expor
               this.target.select.splice(index, 1);
               this.selectSegments.splice(index, 1);
             } else {
-              this.select[index] = this.clone(segment.value);
+              this.target.select[index] = this.clone(segment.value);
               this.selectSegments[index] = segment;
               this.selectSegments[index].type = 'key';
               if (this.selectSegments[this.selectSegments.length - 1].type !== 'plus-button') {

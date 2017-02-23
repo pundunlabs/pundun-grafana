@@ -1,7 +1,7 @@
 <query-editor-row query-ctrl="ctrl" can-collapse="true" has-text-edit-mode="true">
 
 	<div class="gf-form" ng-if="ctrl.target.rawQuery">
-		<input type="text" class="gf-form-input" ng-model="ctrl.target.query" spellcheck="false" ng-blur="ctrl.refresh()"></input>
+		<input type="text" class="gf-form-input" ng-model="ctrl.target.query" spellcheck="false" ng-blur="ctrl.refresh()" disabled></input>
 	</div>
 
 	<div ng-if="!ctrl.target.rawQuery">
