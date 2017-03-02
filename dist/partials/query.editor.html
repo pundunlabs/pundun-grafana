@@ -23,6 +23,22 @@
 			    <metric-segment-model property="ctrl.target.from" get-options="ctrl.getOptions()" on-change="ctrl.onChangeInternal()" css-class="tight-form-item-xxlarge"></metric-segment-model>
 			</div>
 
+			<div class="gf-form">
+				<label class="gf-form-label query-keyword width-9">Time Field Name</label>
+			</div>
+
+			<div class="gf-form">
+			    <metric-segment-model property="ctrl.target.timeField" get-options="ctrl.getOptions()" on-change="ctrl.onChangeInternal()" css-class="tight-form-item-xxlarge"></metric-segment-model>
+			</div>
+
+			<div class="gf-form">
+				<label class="gf-form-label query-keyword width-11">Time Field Precision</label>
+			</div>
+
+			<div class="gf-form">
+					<select class="gf-form-input gf-size-auto" ng-model="ctrl.target.precision" property="ctrl.target.precision" ng-options="s for s in ctrl.precisionOptions" ng-change="ctrl.onChangeInternal()" css-class="tight-form-item-xxlarge"></select>
+			</div>
+
 		</div>
 		<div class="gf-form-inline">
 			<div class="gf-form">

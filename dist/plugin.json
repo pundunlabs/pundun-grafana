@@ -28,6 +28,7 @@
     },
 
     "dependencies": {
+	"pundunVersion": ">=1.0.7",
 	"grafanaVersion": "3.x.x",
 	"plugins": [ ]
     }

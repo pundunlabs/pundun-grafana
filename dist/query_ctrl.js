@@ -74,12 +74,15 @@ System.register(['app/plugins/sdk', './css/query-editor.css!'], function (_expor
           });
           _this.selectSegments.push(uiSegmentSrv.newPlusButton());
           _this.target.from = _this.target.from || '-- enter table name --';
+          _this.target.timeField = _this.target.timeField || 'ts';
+          _this.target.precision = _this.target.precision || 'nanosecond';
           _this.target.where = _this.target.where || [];
           _this.whereSegments = _this.target.where.map(function (w) {
             return uiSegmentSrv.newSegment({ fake: true, value: w });
           });
           _this.whereSegments.push(uiSegmentSrv.newPlusButton());
           _this.removeTagFilterSegment = uiSegmentSrv.newSegment({ fake: true, value: '-- remove --' });
+          _this.precisionOptions = ['second', 'millisecond', 'microsecond', 'nanosecond'];
           return _this;
         }
 

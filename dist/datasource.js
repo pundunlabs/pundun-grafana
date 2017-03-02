@@ -45,6 +45,10 @@ System.register([], function (_export, _context) {
           this.type = instanceSettings.type;
           this.url = instanceSettings.url;
           this.name = instanceSettings.name;
+          this.host = instanceSettings.jsonData.host;
+          this.port = instanceSettings.jsonData.port;
+          this.user = instanceSettings.jsonData.user;
+          this.password = instanceSettings.jsonData.password;
           this.q = $q;
           this.backendSrv = backendSrv;
           this.templateSrv = templateSrv;
@@ -73,6 +77,13 @@ System.register([], function (_export, _context) {
           value: function testDatasource() {
             return this.backendSrv.datasourceRequest({
               url: this.url + '/',
+              params: {
+                name: this.name,
+                host: this.host,
+                port: this.port,
+                user: this.user,
+                password: this.password
+              },
               method: 'GET'
             }).then(function (response) {
               if (response.status === 200) {
@@ -107,13 +118,16 @@ System.register([], function (_export, _context) {
         }, {
           key: 'metricFindQuery',
           value: function metricFindQuery(options) {
-            var target = typeof options === 'string' ? options : options.target;
-            var interpolated = {
-              target: this.templateSrv.replace(target, null, 'regex')
-            };
+            var table = void 0;
+            if (options.from !== '-- enter table name --') {
+              table = options.from;
+            }
             return this.backendSrv.datasourceRequest({
               url: this.url + '/search',
-              data: interpolated,
+              data: {
+                datasource: this.name,
+                table: table
+              },
               method: 'POST',
               headers: { 'Content-Type': 'application/json' }
             }).then(this.mapToTextValue);
@@ -136,20 +150,23 @@ System.register([], function (_export, _context) {
             var _this = this;
             //remove placeholder targets
             options.targets = options.targets.filter(function (target) {
-              return target.target !== 'select metric';
+              var s = target.select.length > 0;
+              var f = target.from !== '-- enter table name --';
+              return s && f;
             });
 
             var targets = options.targets.map(function (target) {
               return {
                 target: _this.templateSrv.replace(target.target),
                 refId: target.refId,
-                hide: target.hide,
                 select: target.select,
                 from: target.from,
+                timeField: target.timeField,
+                precision: target.precision,
                 where: target.where || ''
               };
             });
-
+            options.datasource = this.name;
             options.targets = targets;
 
             return options;
