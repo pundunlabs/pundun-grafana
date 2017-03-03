@@ -1,5 +1,9 @@
  
 {
     "plugins": ["transform-es2015-modules-systemjs", "transform-es2015-for-of"],
-    "presets":  ['es2015']
+    "presets":  ['es2015'],
+    "ignore" :[
+	"lib/server.js",
+	"lib/config.js"
+    ]
 }
