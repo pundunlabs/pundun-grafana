@@ -6,19 +6,20 @@ var moment = require('moment')
 var pundunjs = require('pundunjs')
 var jsep = require('jsep')
 var http = require('http')
+var config = require('./config')
 
 const co = require('co')
 const cf = require('co-functional')
 const debug = require('debug')('server')
-const apiKey = 'eyJrIjoiZ3ZQbFpKdXFjRnBVV3plMEUwUXFxVjFzOVN5N3ZKZjQiLCJuIjoicHVuZHVuIiwiaWQiOjJ9'
+
 const httpHeaders = {
   'Accept': 'application/json',
   'Content-Type': 'application/json',
-  'Authorization': 'Bearer ' + apiKey
+  'Authorization': 'Bearer ' + config.grafana.apiKey
 }
 const httpOptions = {
-  host: 'localhost',
-  port: '3000',
+  host: config.grafana.host,
+  port: config.grafana.port,
   path: '/api/datasources',
   headers: httpHeaders
 }
@@ -401,7 +402,7 @@ if (require.main === module) {
     })
 */
     const port = '8087'
-    app.listen(port)
+    app.listen(config.server.port)
     debug('Server is listening to port', port)
   })
 }

@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf dist/*",
     "copy": "cp -r lib/* dist/",
-    "babel": "babel lib --out-dir dist --ignore server.js",
+    "babel": "babel lib --out-dir dist --ignore server.js config.js",
     "lint": "eslint dist",
     "build:all": "npm run copy && npm run babel && npm run lint",
     "watch:all": "onchange \"lib\" -- npm run build:all",
