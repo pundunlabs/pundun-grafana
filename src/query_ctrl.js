@@ -6,9 +6,10 @@ export class PundunQueryCtrl extends QueryCtrl {
     super($scope, $injector)
     this.scope = $scope
     this.uiSegmentSrv = uiSegmentSrv
+    this.removeTagFilterSegment = uiSegmentSrv.newSegment({fake: true, value: '-- remove --'})
     this.target.select = this.target.select || []
     this.selectSegments = this.target.select.map(s => {
-      return uiSegmentSrv.newSegment({fake: true, value: s})
+      return uiSegmentSrv.newSegment({fake: true, value: s, type: 'key'})
     })
     this.selectSegments.push(uiSegmentSrv.newPlusButton())
     this.target.from = this.target.from || '-- enter table name --'
@@ -16,10 +17,9 @@ export class PundunQueryCtrl extends QueryCtrl {
     this.target.precision = this.target.precision || 'nanosecond'
     this.target.where = this.target.where || []
     this.whereSegments = this.target.where.map(w => {
-      return uiSegmentSrv.newSegment({fake: true, value: w })
+      return uiSegmentSrv.newSegment({fake: true, value: w, type: 'condition' })
     })
     this.whereSegments.push(uiSegmentSrv.newPlusButton())
-    this.removeTagFilterSegment = uiSegmentSrv.newSegment({fake: true, value: '-- remove --'})
     this.precisionOptions = ['second', 'millisecond', 'microsecond', 'nanosecond']
   }
 
