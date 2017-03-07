@@ -115,6 +115,7 @@ export class PundunDatasource {
         timeField: target.timeField,
         precision: target.precision,
         where: target.where || '',
+        resultFormat : target.resultFormat
       }
     })
     options.datasource = this.name

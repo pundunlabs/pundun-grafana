@@ -83,6 +83,8 @@ System.register(['app/plugins/sdk', './css/query-editor.css!'], function (_expor
           });
           _this.whereSegments.push(uiSegmentSrv.newPlusButton());
           _this.precisionOptions = ['second', 'millisecond', 'microsecond', 'nanosecond'];
+          _this.resultFormats = [{ text: 'Time series', value: 'time_series' }, { text: 'Table', value: 'table' }];
+          _this.target.resultFormat = _this.target.resultFormat || 'time_series';
           return _this;
         }
 

@@ -21,6 +21,11 @@ export class PundunQueryCtrl extends QueryCtrl {
     })
     this.whereSegments.push(uiSegmentSrv.newPlusButton())
     this.precisionOptions = ['second', 'millisecond', 'microsecond', 'nanosecond']
+    this.resultFormats = [
+      {text: 'Time series', value: 'time_series'},
+      {text: 'Table', value: 'table'},
+    ]
+    this.target.resultFormat = this.target.resultFormat || 'time_series'
   }
 
   getOptions() {

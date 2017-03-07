@@ -35,7 +35,7 @@
 				<label class="gf-form-label query-keyword width-11">Time Field Precision</label>
 			</div>
 
-			<div class="gf-form">
+			<div class="gf-form-select-wrapper">
 					<select class="gf-form-input gf-size-auto" ng-model="ctrl.target.precision" property="ctrl.target.precision" ng-options="s for s in ctrl.precisionOptions" ng-change="ctrl.onChangeInternal()" css-class="tight-form-item-xxlarge"></select>
 			</div>
 
@@ -47,6 +47,15 @@
 
 			<div class="gf-form" ng-repeat="segment in ctrl.whereSegments">
 			    <metric-segment segment="segment" get-options="ctrl.onWhereSegment(segment)" on-change="ctrl.onWhereUpdate(segment, $index)" css-class="tight-form-item-xxlarge"></metric-segment>
+			</div>
+		</div>
+		<div class="gf-form-inline">
+			<div class="gf-form">
+				<label class="gf-form-label query-keyword width-5">Format</label>
+			</div>
+
+			<div class="gf-form-select-wrapper">
+					<select class="gf-form-input gf-size-auto" ng-model="ctrl.target.resultFormat"  property="ctrl.target.resultFormat" ng-options="f.value as f.text for f in ctrl.resultFormats" ng-change="ctrl.onChangeInternal()"</select>
 			</div>
 		</div>
 	</div>

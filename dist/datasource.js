@@ -163,7 +163,8 @@ System.register([], function (_export, _context) {
                 from: target.from,
                 timeField: target.timeField,
                 precision: target.precision,
-                where: target.where || ''
+                where: target.where || '',
+                resultFormat: target.resultFormat
               };
             });
             options.datasource = this.name;
